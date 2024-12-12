@@ -39,6 +39,8 @@ mod tests{
         let a = vec![20;200];
         let b = a[0..20].to_vec();
         println!("{:?}",b[19]);
+        println!("len {}",b.len())
+        
     }
 
     #[test]
@@ -57,10 +59,30 @@ mod tests{
     }
     #[test]
     fn pt7(){
-        let mut p = Page::default();
+        let mut p = Page::default(); 
         p.write(250, vec![31;500]);
         let r = p.read(730, 24);
         println!("{:?}",r);
+    }
+
+    #[test]
+    fn pt8(){
+        let mut p = Page::default();
+        let len = 2400;
+        p.write(250, vec![31;50000]);
+        let r = p.read(1000, len);
+        println!("{:?}",r);
+        assert_eq!(r.len() , len);
+
+    }
+
+    #[test]
+    fn pt9(){
+        let mut p = Page::default();
+        p.write(0, vec![10;10]);
+
+        p.write(5, vec![11;10]);
+        println!("{:?}",p)
     }
 
     #[test]
@@ -70,8 +92,6 @@ mod tests{
         dbg!("OK!");
         p.write(18446744073709550592 - 200, vec![255;200]);
         println!("{:?}",p);
-        println!("{:?}",p.page.get(&18014398509481982).unwrap().len());
-        println!("{:?}",vec![0;10].len());
 
     }
 }
