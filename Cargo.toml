@@ -4,3 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+nohash-hasher = "0.2.0"
+page_size_macro = {path = "./page_size_macro"}
